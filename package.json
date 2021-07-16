@@ -1,5 +1,5 @@
 {
-  "name": "@NSB/chrome-launcher",
+  "name": "@nsbcypher/chrome-launcher",
   "main": "./dist/index.js",
   "engines": {
     "node": ">=12.13.0"
