@@ -11,7 +11,7 @@
     "test-formatting": "test/check-formatting.sh",
     "format": "scripts/format.sh",
     "type-check": "tsc --allowJs --checkJs --noEmit --target es2019 *.js",
-    "prepublishOnly": "npm run build && npm run test"
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@types/mocha": "^8.0.4",
