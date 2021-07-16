@@ -165,7 +165,7 @@ class Launcher {
     }
 
     private hasRemoteDebuggingFlag() {
-        for (const a of this.flags) {
+        for (const a of this.chromeFlags) {
             if (a.includes('--remote-debugging-port')) {
                 return true;
             }
