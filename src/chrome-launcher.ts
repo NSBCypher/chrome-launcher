@@ -417,14 +417,15 @@ class Launcher {
         });
     }
 
-    async waitForPort(userDirPath: string, port: any = null): Promise<any> {
+    async waitForPort(userDirPath: string, port: any = null, times = 0): Promise<any> {
         const a = await this.readFileFullPath(userDirPath + '/DevToolsActivePort').catch(() => {
 
         });
         if (a) {
             const parts = a.split(/\r?\n/);
             if (port) {
-                if (parts[0] && parts[1] && port !== parts[0]) {
+                times++;
+                if (parts[0] && parts[1] && (port !== parts[0] || times > 2)) {
                     this.webSocketDebuggerUrl = 'ws://localhost:' + parts[0] + parts[1];
                     this.port = Number(parts[0]);
                     return Promise.resolve(this.port);
@@ -436,7 +437,7 @@ class Launcher {
             }
         }
         await this.sleep(100);
-        return this.waitForPort(userDirPath, port);
+        return this.waitForPort(userDirPath, port, times);
     }
 
     async sleep(ms = 0) {
